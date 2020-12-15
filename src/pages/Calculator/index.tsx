@@ -1,17 +1,30 @@
 import React from "react";
-import Number from "./components/Number";
-
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+import Button from "./components/Button";
+import { List, Container, Screen, CurrentValue } from "./CalculatorStyled";
+import { useSelector } from "react-redux";
+import {
+  getAllButtons,
+  getCurrentValue,
+  getMemory,
+} from "../../redux/calculator/selectors";
 
 const Calculator = () => {
-  const numberBtns = numbers.map((num: number) => {
-    return <Number key={num} value={num} />;
+  const buttons = useSelector(getAllButtons);
+  const currentValue = useSelector(getCurrentValue);
+  const memory = useSelector(getMemory);
+
+  const numberBtns = buttons.map((btn: string) => {
+    return <Button key={btn} value={btn} />;
   });
+
   return (
-    <>
-      <h1>calculator</h1>
-      {numberBtns}
-    </>
+    <Container>
+      <Screen>
+        <CurrentValue>{memory}</CurrentValue>
+        <CurrentValue>{currentValue}</CurrentValue>
+      </Screen>
+      <List>{numberBtns}</List>
+    </Container>
   );
 };
 
