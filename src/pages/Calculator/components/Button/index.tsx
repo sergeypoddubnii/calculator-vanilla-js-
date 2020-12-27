@@ -1,6 +1,7 @@
-import React, { MouseEvent } from "react";
+import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { Btn } from "./styledButton";
+// import KeyboardEventHandler from "react-keyboard-event-handler";
 import {
   updateCurrentValue,
   addValueToMemory,
@@ -12,14 +13,15 @@ interface NumberProps {
 
 const Button = ({ value }: NumberProps) => {
   const dispath = useDispatch();
+  const btnRef = useRef();
 
-  const handleClick = (e: MouseEvent) => {
+  const handleClick = () => {
     dispath(updateCurrentValue(value));
   };
 
   return (
     <>
-      <Btn type="button" onClick={handleClick}>
+      <Btn type="button" ref={btnRef} onClick={handleClick}>
         {value}
       </Btn>
     </>
