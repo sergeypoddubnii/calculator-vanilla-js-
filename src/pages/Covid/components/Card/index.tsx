@@ -9,8 +9,8 @@ interface CardProps {
 const Card: FC<CardProps> = ({ title, value }) => {
   return (
     <>
-      <Container>
-        <Title>{title}</Title>
+      <Container title={title}>
+        <Title>{title}:</Title>
         <Value>{value}</Value>
       </Container>
     </>

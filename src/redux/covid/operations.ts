@@ -1,9 +1,9 @@
 import { getGlobalCovid } from "./actions";
 import { getGlobalDataAxios } from "../../api/covid";
 
-export const getGlobalCovidAxios = () => {
+export const getGlobalCovidAxios = () => (dispatch) => {
   getGlobalDataAxios.then((data) => {
     console.log(data);
-    getGlobalCovid(data);
+    dispatch(getGlobalCovid(data));
   });
 };

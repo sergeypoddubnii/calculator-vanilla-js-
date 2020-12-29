@@ -1,16 +1,30 @@
 import styled from "styled-components";
 
+const takeColor = (title) => {
+  if (title === "confirmed") {
+    return "blue";
+  }
+  if (title === "recovered") {
+    return "green";
+  }
+  if (title === "deaths") {
+    return "red";
+  }
+};
+
 export const Container = styled.div`
-  width: 300px;
-  height: 300px;
-  border: 1px solid #000;
+  width: 200px;
+  height: 100px;
+  border: 2px solid;
+  border-color: ${({ title }) => takeColor(title)};
   border-radius: 5px;
-  background-color: green;
-  margin: 10px;
+  margin: 15px;
+  text-align: center;
 `;
 
 export const Title = styled.h2`
-  font-size: 20px;
+  font-size: 18px;
+  text-transform: uppercase;
 `;
 
 export const Value = styled.span`

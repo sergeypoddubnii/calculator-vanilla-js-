@@ -1,10 +1,16 @@
-import React from "react";
-import { getGlobalCovidAxios } from "../../redux/covid/operations";
+import React, { useEffect } from "react";
+// import { getGlobalCovidAxios } from "../../redux/covid/operations";
+// import { getGlobalCovidState } from "../../redux/covid/selectors";
+// import { useDispatch, useSelector } from "react-redux";
 import { Container } from "./covidStyled";
 import Card from "./components/Card/index";
 
 const Covid = () => {
-  getGlobalCovidAxios();
+  // const dispatch = useDispatch();
+  // const globalCovid = useSelector(getGlobalCovidState);
+
+  // useEffect(() => dispatch(getGlobalCovidAxios), []);
+
   return (
     <div>
       <h1>Covid 19</h1>
