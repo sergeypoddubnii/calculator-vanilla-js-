@@ -1,6 +1,5 @@
 const routes = {
-  CALCULATOR: "/calculator",
-  COVID: "/COVID",
+  COVID: "/covid",
 };
 
 export default routes;

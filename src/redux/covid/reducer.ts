@@ -1,8 +1,8 @@
-export { GET_GLOBAL_COVID } from "./types";
+export { LOAD_GLOBAL_COVID, PUT_GLOBAL_COVID } from "./types";
 
 const addToGlobal = (state, action) => ({
   ...state,
-  ...(state.global = action.payload),
+  global: action.payload,
 });
 
 const CovidReducer = {
@@ -11,7 +11,7 @@ const CovidReducer = {
     global: [],
   },
   handlers: {
-    GET_GLOBAL_COVID: addToGlobal,
+    PUT_GLOBAL_COVID: addToGlobal,
   },
 };
 
