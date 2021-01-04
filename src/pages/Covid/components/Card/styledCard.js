@@ -14,12 +14,15 @@ const takeColor = (title) => {
 
 export const Container = styled.div`
   width: 200px;
-  height: 100px;
+  height: 150px;
   border: 2px solid;
   border-color: ${({ title }) => takeColor(title)};
   border-radius: 5px;
   margin: 15px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `;
 
 export const Title = styled.h2`
@@ -29,4 +32,8 @@ export const Title = styled.h2`
 
 export const Value = styled.span`
   font-size: 30px;
+`;
+
+export const LastUpDate = styled.span`
+  font-size: 14px;
 `;

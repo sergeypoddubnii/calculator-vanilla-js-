@@ -7,7 +7,7 @@ import Card from "./components/Card/index";
 
 const Covid = () => {
   const dispatch = useDispatch();
-  const globalCovid = useSelector(getGlobalCovidState);
+  const { confirmed, recovered, deaths, lastUpdate } = useSelector(getGlobalCovidState);
 
   useEffect(() => dispatch(loadGlobalCovid()), [dispatch]);
 
@@ -15,9 +15,9 @@ const Covid = () => {
     <div>
       <h1>Covid 19</h1>
       <Container>
-        <Card title="confirmed" value={globalCovid?.confirmed?.value} />
-        <Card title="recovered" value={globalCovid?.recovered?.value} />
-        <Card title="deaths" value={globalCovid?.deaths?.value} />
+        <Card title="confirmed" value={confirmed?.value} date={new Date(lastUpdate).toDateString()} />
+        <Card title="recovered" value={recovered?.value} date={new Date(lastUpdate).toDateString()} />
+        <Card title="deaths" value={deaths?.value} date={new Date(lastUpdate).toDateString()} />
       </Container>
     </div>
   );
