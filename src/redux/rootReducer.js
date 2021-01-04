@@ -1,8 +1,8 @@
-import CalcReducer from "./calculator/reducer";
 import { combineReducers } from "redux";
 import createReducer from "./createReducer";
+import CovidReducer from "./covid/reducer";
 
-const reducers = [CalcReducer];
+const reducers = [CovidReducer];
 
 export const rootReducer = combineReducers(
   reducers.reduce(

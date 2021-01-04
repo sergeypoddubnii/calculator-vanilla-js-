@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import routes from "./routes";
-import Calculator from "./pages/Calculator";
 import Header from "./components/Header";
+import Covid from "./pages/Covid";
+import routes from "./routes";
 
 const App = () => {
   return (
@@ -10,8 +10,8 @@ const App = () => {
       <Header />
       <BrowserRouter>
         <Switch>
-          <Route path={routes.CALCULATOR} component={Calculator} />
-          <Redirect to={routes.CALCULATOR} />
+          <Route path={routes.COVID} component={Covid} />
+          <Redirect to={routes.COVID} />
         </Switch>
       </BrowserRouter>
     </>
