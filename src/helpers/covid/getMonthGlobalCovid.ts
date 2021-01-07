@@ -3,10 +3,9 @@ import moment from "moment";
 export const getMonthGlobalCovid = (data) => {
   let date = "January 2020";
   let perMonthData = {};
-  let arrIndx = 0;
-  let confirmed = 0;
   let deaths = 0;
-
+  let confirmed = 0;
+  let arrIndx = 0;
   const monthGlobalData = data.reduce((acc, item) => {
     if (moment(item.date).format("MMMM YYYY") === date) {
       confirmed = confirmed + item.confirmed;
@@ -30,5 +29,9 @@ export const getMonthGlobalCovid = (data) => {
     }
     return acc;
   }, []);
+
+  let perMonthData1 = [];
+  let indx = 0;
+
   return monthGlobalData;
 };

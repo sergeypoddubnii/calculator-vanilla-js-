@@ -12,7 +12,6 @@ const Covid = () => {
   const dispatch = useDispatch();
   const { confirmed, recovered, deaths, lastUpdate } = useSelector(getGlobalCovidState);
   const dailyCovid = useSelector(getDailyCovidState);
-  console.log("dailyCovid", dailyCovid);
 
   useEffect(() => {
     dispatch(loadGlobalCovid());
