@@ -25,7 +25,7 @@ export const putDailyCovid = ({ data }): any => {
   const mapedData = data.map((item) => ({
     confirmed: item?.confirmed?.total,
     deaths: item?.deaths?.total,
-    reportDate: item?.reportDate,
+    date: item?.reportDate,
   }));
 
   return {

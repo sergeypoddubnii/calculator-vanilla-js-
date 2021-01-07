@@ -14,7 +14,7 @@ const CovidReducer = {
   stateKey: "covid",
   initialState: {
     global: {},
-    daily: {},
+    daily: [],
   },
   handlers: {
     PUT_GLOBAL_COVID: addToGlobal,

@@ -8,7 +8,6 @@ interface CardProps {
 }
 
 const Card: FC<CardProps> = ({ title, value, date }) => {
-  console.log(date);
   return (
     <>
       <Container title={title}>
