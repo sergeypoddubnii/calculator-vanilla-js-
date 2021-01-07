@@ -1,7 +1,7 @@
 import { call, takeEvery, put } from "redux-saga/effects";
-import { loadGlobalDataAxios } from "../../api/covid";
-import { LOAD_GLOBAL_COVID } from "../covid/types";
-import { putGlobalCovid } from "../covid/actions";
+import { loadGlobalDataAxios, loadDailyDataAxios } from "../../api/covid";
+import { LOAD_DAILY_COVID, LOAD_GLOBAL_COVID } from "../covid/types";
+import { putDailyCovid, putGlobalCovid } from "../covid/actions";
 
 function* workerLoadGlobalCovid() {
   const loadedData = yield call(loadGlobalDataAxios);
@@ -10,4 +10,13 @@ function* workerLoadGlobalCovid() {
 
 export function* watchLoadGlobalCovid() {
   yield takeEvery(LOAD_GLOBAL_COVID, workerLoadGlobalCovid);
+}
+
+function* workerLoadDailyCovid() {
+  const loadedData = yield call(loadDailyDataAxios);
+  yield put(putDailyCovid(loadedData));
+}
+
+export function* watchLoadDailyCovid() {
+  yield takeEvery(LOAD_DAILY_COVID, workerLoadDailyCovid);
 }
