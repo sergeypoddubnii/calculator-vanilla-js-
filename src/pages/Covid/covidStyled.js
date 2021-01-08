@@ -20,4 +20,5 @@ export const Button = styled.button`
   padding: 10px;
   background: transparent;
   margin-right: 10px;
+  text-transform: uppercase;
 `;

@@ -7,8 +7,8 @@ import routes from "./routes";
 const App = () => {
   return (
     <>
-      <Header />
       <BrowserRouter>
+        <Header />
         <Switch>
           <Route path={routes.COVID} component={Covid} />
           <Redirect to={routes.COVID} />

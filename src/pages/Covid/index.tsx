@@ -42,8 +42,20 @@ const Covid = () => {
         <Card title="deaths" value={addSpaceBetweenNumber(deaths)} date={moment(lastUpdate).format("MMMM Do YYYY")} />
       </Container>
       <ButtonWrapper>
-        <Button onClick={handlerTotalChart}>total confirmed covid</Button>
-        <Button onClick={handlerMonthlyChart}>monthly confirmed covid</Button>
+        <Button
+          onClick={handlerTotalChart}
+          type="button"
+          style={chart ? { backgroundColor: "blue", color: "white" } : { backgroundColor: "transparent" }}
+        >
+          total confirmed covid
+        </Button>
+        <Button
+          onClick={handlerMonthlyChart}
+          type="button"
+          style={chart ? { backgroundColor: "transparent" } : { backgroundColor: "blue", color: "white" }}
+        >
+          monthly confirmed covid
+        </Button>
       </ButtonWrapper>
       {chart ? <TotalChart /> : <MonthlyChart />}
     </div>
