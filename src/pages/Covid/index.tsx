@@ -1,26 +1,33 @@
-import React, { useEffect } from "react";
-import { getGlobalCovidState, getDailyCovidState } from "../../redux/covid/selectors";
+import React, { useEffect, useState } from "react";
+import { getGlobalCovidState } from "../../redux/covid/selectors";
 import { loadGlobalCovid, loadDailyCovid } from "../../redux/covid/actions";
 import { useDispatch, useSelector } from "react-redux";
-import moment from "moment";
-import { Container } from "./covidStyled";
-import Card from "./components/Card/index";
-import Chart from "./components/Chart";
 import { addSpaceBetweenNumber } from "../../helpers/covid/addSpaceBetweenNumber";
+import { Container, Button, ButtonWrapper } from "./covidStyled";
+import Card from "./components/Card/index";
+import TotalChart from "./components/TotalChart";
+import MonthlyChart from "./components/MonthlyChart";
+import moment from "moment";
 
 const Covid = () => {
   const dispatch = useDispatch();
   const { confirmed, recovered, deaths, lastUpdate } = useSelector(getGlobalCovidState);
-  const dailyCovid = useSelector(getDailyCovidState);
+  const [chart, setChart] = useState(true);
 
   useEffect(() => {
     dispatch(loadGlobalCovid());
     dispatch(loadDailyCovid());
   }, [dispatch]);
 
+  const handlerTotalChart = () => {
+    setChart(true);
+  };
+  const handlerMonthlyChart = () => {
+    setChart(false);
+  };
+
   return (
     <div>
-      <h1>Covid 19</h1>
       <Container>
         <Card
           title="confirmed"
@@ -34,7 +41,23 @@ const Covid = () => {
         />
         <Card title="deaths" value={addSpaceBetweenNumber(deaths)} date={moment(lastUpdate).format("MMMM Do YYYY")} />
       </Container>
-      <Chart dailyData={dailyCovid} />
+      <ButtonWrapper>
+        <Button
+          onClick={handlerTotalChart}
+          type="button"
+          style={chart ? { backgroundColor: "blue", color: "white" } : { backgroundColor: "transparent" }}
+        >
+          total confirmed covid
+        </Button>
+        <Button
+          onClick={handlerMonthlyChart}
+          type="button"
+          style={chart ? { backgroundColor: "transparent" } : { backgroundColor: "blue", color: "white" }}
+        >
+          monthly confirmed covid
+        </Button>
+      </ButtonWrapper>
+      {chart ? <TotalChart /> : <MonthlyChart />}
     </div>
   );
 };
