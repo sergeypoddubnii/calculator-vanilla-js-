@@ -13,7 +13,7 @@ const Header = () => {
           </NavLink>
         </ListItem>
         <ListItem>
-          <NavLink to={routes.COVID} style={{ color: "white" }}>
+          <NavLink to={routes.WEATHER} style={{ color: "white" }}>
             Weather
           </NavLink>
         </ListItem>
