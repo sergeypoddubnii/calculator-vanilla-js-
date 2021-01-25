@@ -4,8 +4,12 @@ import { LOAD_DAILY_COVID, LOAD_GLOBAL_COVID } from "../covid/types";
 import { putDailyCovid, putGlobalCovid } from "../covid/actions";
 
 function* workerLoadGlobalCovid() {
-  const loadedData = yield call(loadGlobalDataAxios);
-  yield put(putGlobalCovid(loadedData));
+  try {
+    const loadedData = yield call(loadGlobalDataAxios);
+    yield put(putGlobalCovid(loadedData));
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 export function* watchLoadGlobalCovid() {
@@ -13,8 +17,12 @@ export function* watchLoadGlobalCovid() {
 }
 
 function* workerLoadDailyCovid() {
-  const loadedData = yield call(loadDailyDataAxios);
-  yield put(putDailyCovid(loadedData));
+  try {
+    const loadedData = yield call(loadDailyDataAxios);
+    yield put(putDailyCovid(loadedData));
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 export function* watchLoadDailyCovid() {
