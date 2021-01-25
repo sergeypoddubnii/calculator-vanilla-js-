@@ -19,4 +19,5 @@ const Card: FC<CardProps> = ({ title, value, date }) => {
   );
 };
 
-export default Card;
+// remove unnecessary re-render
+export default React.memo(Card);
