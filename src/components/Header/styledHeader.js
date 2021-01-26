@@ -4,6 +4,7 @@ export const HeaderContainer = styled.header`
   width: 100%;
   height: 100px;
   background-color: #8284f4;
+  margin-bottom: 10px;
 `;
 
 export const List = styled.ul`

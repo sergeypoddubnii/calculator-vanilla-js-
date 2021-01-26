@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
 import { loadCurrentWeather } from "../../api/weather";
+import Form from "./components/Form";
+import Description from "./components/Description/index";
 
 const Weather = () => {
   useEffect(() => {
-    console.log(loadCurrentWeather());
+    console.log(loadCurrentWeather("Kiev"));
   }, []);
   return (
     <div>
-      <h1>Weather</h1>
+      <Form />
+      <Description />
     </div>
   );
 };
