@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const FormInput = styled.form`
-  margin: 0 auto;
+  margin: 0 auto 30px;
   display: flex;
   justify-content: center;
   height: 40px;
