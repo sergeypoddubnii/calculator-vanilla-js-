@@ -12,7 +12,6 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(getInfoCity(value));
-    console.log(value);
     setValue("");
   };
   return (

@@ -1,1 +1,1 @@
-export const getCurrentWeather = () => {};
+export const getCurrentWeather = (state) => state.weather.currentWeather;

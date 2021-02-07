@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -9,25 +10,32 @@ import {
   Temp,
   TempDescription,
 } from "./styledGeneralDescription";
+import { useSelector } from "react-redux";
+import { getCurrentWeather } from "../../../../redux/weather/selectors";
 
 const GeneralDescription = () => {
-  const hi = require("../../../../assets/weather/icons/a05d.png");
+  const { city_name, temp, tempFills, ts, weather } = useSelector(
+    getCurrentWeather
+  );
+
+  const icon =
+    weather && require(`../../../../assets/weather/icons/${weather.icon}.png`);
   return (
     <div>
       <Wrapper>
         <Location>
           <FontAwesomeIcon icon={faMapMarkerAlt}></FontAwesomeIcon>
-          Kiev
+          {city_name}
         </Location>
-        <CurrentDate>пт, 5 лютого 11:27</CurrentDate>
+        <CurrentDate>{moment(ts).format("MMM Do YY")}</CurrentDate>
         <TempContainer>
           <Temp>
-            <span>-9°</span>
-            <img src={hi.default} />
+            <span>{temp}°</span>
+            <img src={icon?.default} />
           </Temp>
           <TempDescription>
-            <span>Sunny</span>
-            <span>fills like -14°</span>
+            <span>{weather?.description}</span>
+            <span>fills like {tempFills}°</span>
           </TempDescription>
         </TempContainer>
       </Wrapper>

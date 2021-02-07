@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getInfoGeolocation } from "../../redux/weather/actions";
 import Form from "./components/Form";
 import GeneralDescription from "./components/GerenalDescription/index";
@@ -10,11 +10,8 @@ const Weather = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(getPosition);
     }
-    function getPosition(position) {
-      console.log(position.coords.latitude, position.coords.longitude);
-      dispatch(
-        getInfoGeolocation(position.coords.latitude, position.coords.longitude)
-      );
+    function getPosition({ coords }) {
+      dispatch(getInfoGeolocation(coords.latitude, coords.longitude));
     }
   }, [dispatch]);
 

@@ -23,6 +23,7 @@ export const CurrentDate = styled.div`
 export const TempContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const Temp = styled.div`

@@ -8,4 +8,4 @@ export const loadCurrentWeatherByCity = (city): any =>
   axios.get(`${baseUrl}/current?city=${city}${keyApi}`);
 
 export const loadCurrentWeatherByGeo = (lat: any, lon: any): any =>
-  axios.get(`${baseUrl}/current&lat=${lat}&lon=${lon}${keyApi}`);
+  axios.get(`${baseUrl}/current?lat=${lat}&lon=${lon}${keyApi}`);

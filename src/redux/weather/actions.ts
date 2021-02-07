@@ -3,7 +3,7 @@ import { selectData } from "../../helpers/weather/selectData";
 
 export const putCurrentWeather = (weather) => ({
   type: PUT_CURRENT_WEATHER,
-  payload: selectData(weather),
+  payload: selectData(weather.data.data[0]),
 });
 //get city name
 export const getInfoCity = (city) => ({
