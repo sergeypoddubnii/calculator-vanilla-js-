@@ -11,15 +11,33 @@ import {
   TempDescription,
 } from "./styledGeneralDescription";
 import { useSelector } from "react-redux";
-import { getCurrentWeather } from "../../../../redux/weather/selectors";
+import {
+  getCurrentWeather,
+  getHourlyForecast,
+} from "../../../../redux/weather/selectors";
+import HourlyForecastItem from "../HourlyForecastItem/HourlyForecastItem";
 
 const GeneralDescription = () => {
-  const { city_name, temp, tempFills, ts, weather } = useSelector(
+  const { city_name, temp, tempFills, ob_time, weather } = useSelector(
     getCurrentWeather
   );
-
+  const hourlyForecastData = useSelector(getHourlyForecast);
+  //load icon
   const icon =
     weather && require(`../../../../assets/weather/icons/${weather.icon}.png`);
+
+  const hourlyForecast = hourlyForecastData.map(
+    ({ temp, tempFills, weather, humidity, time }: any): any => (
+      <HourlyForecastItem
+        key={time}
+        temp={temp}
+        tempFills={tempFills}
+        weather={weather}
+        humidity={humidity}
+        time={time}
+      />
+    )
+  );
   return (
     <div>
       <Wrapper>
@@ -27,17 +45,18 @@ const GeneralDescription = () => {
           <FontAwesomeIcon icon={faMapMarkerAlt}></FontAwesomeIcon>
           {city_name}
         </Location>
-        <CurrentDate>{moment(ts).format("MMM Do YY")}</CurrentDate>
+        <CurrentDate>{moment(ob_time).format("MMM Do YYYY")}</CurrentDate>
         <TempContainer>
           <Temp>
             <span>{temp}°</span>
-            <img src={icon?.default} />
+            <img src={icon?.default} alt={weather?.description} width={80} />
           </Temp>
           <TempDescription>
             <span>{weather?.description}</span>
             <span>fills like {tempFills}°</span>
           </TempDescription>
         </TempContainer>
+        {hourlyForecast}
       </Wrapper>
     </div>
   );

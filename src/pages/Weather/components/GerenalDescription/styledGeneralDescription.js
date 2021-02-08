@@ -10,9 +10,6 @@ export const Wrapper = styled.div`
 `;
 
 export const Location = styled.div`
-  width: 70px;
-  display: flex;
-  justify-content: space-between;
   font-size: 25px;
 `;
 

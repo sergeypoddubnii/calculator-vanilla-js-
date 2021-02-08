@@ -2,7 +2,7 @@ export const selectData = (data) => {
   const {
     sunrise,
     sunset,
-    ts,
+    ob_time,
     city_name,
     pres,
     wind_spd,
@@ -17,7 +17,7 @@ export const selectData = (data) => {
   return {
     sunrise,
     sunset,
-    ts,
+    ob_time,
     city_name,
     pres,
     windSpeed: wind_spd,
