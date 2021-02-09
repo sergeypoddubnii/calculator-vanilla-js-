@@ -1,8 +1,8 @@
 export const selectData = (data) => {
   const {
-    sunrize,
+    sunrise,
     sunset,
-    ts,
+    ob_time,
     city_name,
     pres,
     wind_spd,
@@ -15,15 +15,15 @@ export const selectData = (data) => {
   } = data;
 
   return {
-    sunrize,
+    sunrise,
     sunset,
-    ts,
+    ob_time,
     city_name,
     pres,
     windSpeed: wind_spd,
     windDirection: wind_cdir_full,
-    temp: temp,
-    tempFills: app_temp,
+    temp: Math.round(temp),
+    tempFills: Math.round(app_temp),
     humidity: rh,
     clouds,
     weather,
