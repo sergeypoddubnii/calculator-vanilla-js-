@@ -16,6 +16,9 @@ import {
   getHourlyForecast,
 } from "../../../../redux/weather/selectors";
 import HourlyForecastItem from "../HourlyForecastItem/HourlyForecastItem";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const GeneralDescription = () => {
   const { city_name, temp, tempFills, ob_time, weather } = useSelector(
@@ -38,6 +41,13 @@ const GeneralDescription = () => {
       />
     )
   );
+
+  const settings = {
+    speed: 500,
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    infinite: false,
+  };
   return (
     <div>
       <Wrapper>
@@ -56,7 +66,7 @@ const GeneralDescription = () => {
             <span>fills like {tempFills}°</span>
           </TempDescription>
         </TempContainer>
-        {hourlyForecast}
+        <Slider {...settings}>{hourlyForecast}</Slider>
       </Wrapper>
     </div>
   );
