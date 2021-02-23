@@ -31,9 +31,9 @@ function* workerLoadCurrentWeatherGeo(action) {
   try {
     const [loadedWeather, loadedHourlyForecast] = yield all([
       call(loadCurrentWeatherByGeo, action.payload.lat, action.payload.lon),
-      call(loadForecasthourlyByGeo, action.payload.lat, action.payload.lon),
+      // call(loadForecasthourlyByGeo, action.payload.lat, action.payload.lon),
     ]);
-    yield put(putHourlyWeather(loadedHourlyForecast));
+    // yield put(putHourlyWeather(loadedHourlyForecast));
     yield put(putCurrentWeather(loadedWeather));
   } catch (error) {
     console.log(error);
