@@ -3,24 +3,25 @@ import { useDispatch } from "react-redux";
 import { getInfoGeolocation } from "../../redux/weather/actions";
 import Form from "./components/Form";
 import GeneralDescription from "./components/GerenalDescription/index";
+import DailyList from "./components/DailyList";
 
 const Weather = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (navigator.geolocation) {
-      console.log(navigator.geolocation.getCurrentPosition(getPosition));
+      navigator.geolocation.getCurrentPosition(getPosition);
     }
     function getPosition({ coords }) {
-      console.log(coords);
-      console.log("location");
+      console.log(coords.latitude, coords.longitude);
       dispatch(getInfoGeolocation(coords.latitude, coords.longitude));
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
       <Form />
       <GeneralDescription />
+      <DailyList />
     </>
   );
 };

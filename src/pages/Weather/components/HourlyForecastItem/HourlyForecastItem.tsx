@@ -11,7 +11,6 @@ import {
 const HourlyForecastItem = ({ temp, tempFills, weather, humidity, time }) => {
   const icon =
     weather && require(`../../../../assets/weather/icons/${weather.icon}.png`);
-
   return (
     <Wrapper>
       <Time>{moment(time).format("LT")}</Time>

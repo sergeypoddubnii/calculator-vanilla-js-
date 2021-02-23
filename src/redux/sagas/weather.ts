@@ -3,43 +3,52 @@ import {
   loadCurrentWeatherByCity,
   loadCurrentWeatherByGeo,
   loadForecastHourlyByCity,
-  loadForecasthourlyByGeo,
+  loadForecastHourlyByGeo,
+  loadForecastDailyByCity,
+  loadForecastDailyByGeo,
 } from "../../api/weather";
 import { GET_CITY, GET_GEOLOCATION } from "../weather/types";
-import { putCurrentWeather, putHourlyWeather } from "../weather/actions";
+import {
+  putCurrentWeather,
+  putHourlyWeather,
+  putDailyWeather,
+} from "../weather/actions";
 
-//load current weather and hourly forecast by city name
-function* workerLoadCurrentWeatherCity(action) {
+//load current hourly daily by city name
+function* workerLoadWeatherCity(action) {
   try {
-    const [loadedCurrentWeaher, loadedHourly] = yield all([
+    const [loadedCurrentWeaher, loadedDaily, loadedHourly] = yield all([
       call(loadCurrentWeatherByCity, action.payload),
-      call(loadForecastHourlyByCity, action.payload),
+      call(loadForecastDailyByCity, action.payload),
     ]);
-    yield put(putHourlyWeather(loadedHourly));
     yield put(putCurrentWeather(loadedCurrentWeaher));
+    yield put(putDailyWeather(loadedDaily));
+    // yield put(putHourlyWeather(loadedHourly));
   } catch (error) {
     console.error(error);
   }
 }
 
-export function* watchLoadCurrentWeatherCity() {
-  yield takeEvery(GET_CITY, workerLoadCurrentWeatherCity);
+export function* watchLoadWeatherCity() {
+  yield takeEvery(GET_CITY, workerLoadWeatherCity);
 }
 
-//load current weather and hourly forecast by geolocation
-function* workerLoadCurrentWeatherGeo(action) {
+//load current daily hourly weather by geo
+function* workerLoadWeatherGeo(action) {
   try {
-    const [loadedWeather, loadedHourlyForecast] = yield all([
+    const [loadedWeather, loadedDaily, loadedHourly] = yield all([
       call(loadCurrentWeatherByGeo, action.payload.lat, action.payload.lon),
-      // call(loadForecasthourlyByGeo, action.payload.lat, action.payload.lon),
+      call(loadForecastDailyByGeo, action.payload.lat, action.payload.lon),
+      // call(loadForecastHourlyByGeo, action.payload.lat, action.payload.lon),
     ]);
-    // yield put(putHourlyWeather(loadedHourlyForecast));
     yield put(putCurrentWeather(loadedWeather));
+    yield put(putDailyWeather(loadedDaily));
+    // yield put(putHourlyWeather(loadedHourly));
   } catch (error) {
     console.log(error);
   }
 }
 
-export function* watchLoadCurrentWeatherGeo() {
-  yield takeEvery(GET_GEOLOCATION, workerLoadCurrentWeatherGeo);
+export function* watchLoadWeatherGeo() {
+  yield takeEvery(GET_GEOLOCATION, workerLoadWeatherGeo);
 }

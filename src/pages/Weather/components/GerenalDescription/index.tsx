@@ -25,6 +25,7 @@ const GeneralDescription = () => {
     getCurrentWeather
   );
   const hourlyForecastData = useSelector(getHourlyForecast);
+
   //load icon
   const icon =
     weather && require(`../../../../assets/weather/icons/${weather.icon}.png`);
@@ -32,7 +33,7 @@ const GeneralDescription = () => {
   const hourlyForecast = hourlyForecastData.map(
     ({ temp, tempFills, weather, humidity, time }: any): any => (
       <HourlyForecastItem
-        key={time}
+        key={humidity}
         temp={temp}
         tempFills={tempFills}
         weather={weather}
