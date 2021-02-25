@@ -10,20 +10,9 @@ export const loadCurrentWeatherByCity = (city): any =>
 export const loadCurrentWeatherByGeo = (lat: any, lon: any): any =>
   axios.get(`${baseUrl}/current?lat=${lat}&lon=${lon}${keyApi}`);
 
-// load hourly forecast 24 hours
-export const loadForecastHourlyByCity = (city): any =>
-  axios.get(`${baseUrl}/forecast/hourly?city=${city}${keyApi}`);
-
-export const loadForecastHourlyByGeo = (lat: any, lon: any): any =>
-  axios.get(
-    `${baseUrl}/forecast/hourly?lat=${lat}&lon=${lon}${keyApi}&hours=24`
-  );
-
 // load daily forecast
 export const loadForecastDailyByCity = (city): any =>
   axios.get(`${baseUrl}/forecast/daily?city=${city}${keyApi}`);
 
 export const loadForecastDailyByGeo = (lat: any, lon: any): any =>
   axios.get(`${baseUrl}/forecast/daily?lat=${lat}&lon=${lon}${keyApi}`);
-
-// https://api.weatherbit.io/v2.0/forecast/hourly?city=Raleigh,NC&key=API_KEY&hours=48

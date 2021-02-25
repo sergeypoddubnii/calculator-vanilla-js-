@@ -11,44 +11,16 @@ import {
   TempDescription,
 } from "./styledGeneralDescription";
 import { useSelector } from "react-redux";
-import {
-  getCurrentWeather,
-  getHourlyForecast,
-} from "../../../../redux/weather/selectors";
-import HourlyForecastItem from "../HourlyForecastItem/HourlyForecastItem";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { getCurrentWeather } from "../../../../redux/weather/selectors";
 
 const GeneralDescription = () => {
   const { city_name, temp, tempFills, ob_time, weather } = useSelector(
     getCurrentWeather
   );
-  const hourlyForecastData = useSelector(getHourlyForecast);
 
   //load icon
   const icon =
     weather && require(`../../../../assets/weather/icons/${weather.icon}.png`);
-
-  const hourlyForecast = hourlyForecastData.map(
-    ({ temp, tempFills, weather, humidity, time }: any): any => (
-      <HourlyForecastItem
-        key={humidity}
-        temp={temp}
-        tempFills={tempFills}
-        weather={weather}
-        humidity={humidity}
-        time={time}
-      />
-    )
-  );
-
-  const settings = {
-    speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    infinite: false,
-  };
   return (
     <div>
       <Wrapper>
@@ -67,7 +39,6 @@ const GeneralDescription = () => {
             <span>fills like {tempFills}°</span>
           </TempDescription>
         </TempContainer>
-        <Slider {...settings}>{hourlyForecast}</Slider>
       </Wrapper>
     </div>
   );
