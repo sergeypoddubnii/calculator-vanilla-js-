@@ -4,6 +4,7 @@ import { getInfoGeolocation } from "../../redux/weather/actions";
 import Form from "./components/Form";
 import GeneralDescription from "./components/GerenalDescription/index";
 import DailyList from "./components/DailyList";
+import AdditionalDescription from "./components/AdditionalDescription/AdditionalDescription";
 
 const Weather = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const Weather = () => {
       <Form />
       <GeneralDescription />
       <DailyList />
+      <AdditionalDescription />
     </>
   );
 };

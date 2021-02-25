@@ -13,7 +13,7 @@ const DailyItem = ({ date, humidity, weather, maxTemp, minTemp }) => {
         <img src={iconWeather?.default} alt={weather?.description} width={40} />
       </Weather>
       <Temp>
-        {maxTemp}/{minTemp}
+        {maxTemp}°/{minTemp}°
       </Temp>
     </Wrapper>
   );

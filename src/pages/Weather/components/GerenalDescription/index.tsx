@@ -59,7 +59,7 @@ const GeneralDescription = () => {
         <CurrentDate>{moment(ob_time).format("MMM Do YYYY")}</CurrentDate>
         <TempContainer>
           <Temp>
-            <span>{temp}°</span>
+            <span>{temp}&#8451;</span>
             <img src={icon?.default} alt={weather?.description} width={80} />
           </Temp>
           <TempDescription>
