@@ -17,3 +17,6 @@ a {
 .slick-next:before {
   color: black !important;
 }
+.slick-slider {
+  width: 100%;
+}

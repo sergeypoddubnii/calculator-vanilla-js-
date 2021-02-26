@@ -9,15 +9,32 @@ import {
   TempContainer,
   Temp,
   TempDescription,
+  AddIndicators,
+  AddIndicator,
+  ItemTitle,
+  ItemValue,
 } from "./styledGeneralDescription";
 import { useSelector } from "react-redux";
 import { getCurrentWeather } from "../../../../redux/weather/selectors";
 
 const GeneralDescription = () => {
-  const { city_name, temp, tempFills, ob_time, weather } = useSelector(
-    getCurrentWeather
-  );
-
+  const {
+    city_name,
+    temp,
+    tempFills,
+    ob_time,
+    weather,
+    humidity,
+    sunrise,
+    sunset,
+    windSpeed,
+    windDirection,
+  } = useSelector(getCurrentWeather);
+  //icons
+  const iconHumudity = require(`../../../../assets/weather/humidity.jpg`);
+  const iconSunrise = require(`../../../../assets/weather/sunrise.png`);
+  const iconSunset = require(`../../../../assets/weather/sunset.png`);
+  const iconWind = require(`../../../../assets/weather/wind.png`);
   //load icon
   const icon =
     weather && require(`../../../../assets/weather/icons/${weather.icon}.png`);
@@ -39,6 +56,52 @@ const GeneralDescription = () => {
             <span>fills like {tempFills}°</span>
           </TempDescription>
         </TempContainer>
+        <AddIndicators>
+          <AddIndicator>
+            <ItemTitle>
+              <img
+                src={iconSunrise?.default}
+                alt={iconSunrise?.description}
+                width={20}
+              />
+              <span>Sunrise</span>
+            </ItemTitle>
+            <ItemValue>{sunrise}</ItemValue>
+          </AddIndicator>
+          <AddIndicator>
+            <ItemTitle>
+              <img
+                src={iconSunset?.default}
+                alt={iconSunset?.description}
+                width={20}
+              />
+              <span>Sunset</span>
+            </ItemTitle>
+            <ItemValue>{sunset}</ItemValue>
+          </AddIndicator>
+          <AddIndicator>
+            <ItemTitle>
+              <img
+                src={iconWind?.default}
+                alt={iconWind?.description}
+                width={20}
+              />
+              Wind speed({windDirection})
+            </ItemTitle>
+            <ItemValue>{windSpeed}m/s</ItemValue>
+          </AddIndicator>
+          <AddIndicator>
+            <ItemTitle>
+              <img
+                src={iconHumudity?.default}
+                alt={iconHumudity?.description}
+                width={20}
+              />
+              <span>Humidity</span>
+            </ItemTitle>
+            <ItemValue>{humidity}%</ItemValue>
+          </AddIndicator>
+        </AddIndicators>
       </Wrapper>
     </div>
   );

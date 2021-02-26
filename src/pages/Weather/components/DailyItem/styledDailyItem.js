@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 100%;
+  height: 200px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
 `;
 
 export const DateTime = styled.div`
-  width: 120px;
+  text-align: center;
 `;
 
 export const Himidity = styled.div``;
@@ -15,7 +17,6 @@ export const Himidity = styled.div``;
 export const Weather = styled.div``;
 
 export const Temp = styled.div`
-  width: 50px;
   display: flex;
   justify-content: flex-end;
 `;

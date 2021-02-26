@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   border-radius: 5px;
   margin: 0 auto 15px;
   width: 50%;
-  height: 300px;
   padding: 25px;
 `;
 
@@ -33,3 +32,21 @@ export const TempDescription = styled.div`
   flex-direction: column;
   align-items: flex-end;
 `;
+
+export const AddIndicators = styled.ul`
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 80px;
+`;
+
+export const AddIndicator = styled.li`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 10px;
+`;
+
+export const ItemTitle = styled.span``;
+
+export const ItemValue = styled.span``;

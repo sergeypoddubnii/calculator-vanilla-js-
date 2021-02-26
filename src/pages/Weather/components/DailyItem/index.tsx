@@ -9,16 +9,20 @@ const DailyItem = ({ date, humidity, weather, maxTemp, minTemp }) => {
   return (
     <Wrapper>
       <DateTime>{moment(date).format("dddd")}</DateTime>
-      <Himidity>
-        <img src={iconHumudity?.default} alt={weather?.description} width={20} />
-        {humidity}%
-      </Himidity>
       <Weather>
         <img src={iconWeather?.default} alt={weather?.description} width={40} />
       </Weather>
       <Temp>
         {maxTemp}°/{minTemp}°
       </Temp>
+      <Himidity>
+        <img
+          src={iconHumudity?.default}
+          alt={weather?.description}
+          width={20}
+        />
+        {humidity}%
+      </Himidity>
     </Wrapper>
   );
 };
