@@ -9,45 +9,35 @@ import {
   TempContainer,
   Temp,
   TempDescription,
+  AddIndicators,
+  AddIndicator,
+  ItemTitle,
+  ItemValue,
 } from "./styledGeneralDescription";
 import { useSelector } from "react-redux";
-import {
-  getCurrentWeather,
-  getHourlyForecast,
-} from "../../../../redux/weather/selectors";
-import HourlyForecastItem from "../HourlyForecastItem/HourlyForecastItem";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { getCurrentWeather } from "../../../../redux/weather/selectors";
 
 const GeneralDescription = () => {
-  const { city_name, temp, tempFills, ob_time, weather } = useSelector(
-    getCurrentWeather
-  );
-  const hourlyForecastData = useSelector(getHourlyForecast);
+  const {
+    city_name,
+    temp,
+    tempFills,
+    ob_time,
+    weather,
+    humidity,
+    sunrise,
+    sunset,
+    windSpeed,
+    windDirection,
+  } = useSelector(getCurrentWeather);
+  //icons
+  const iconHumudity = require(`../../../../assets/weather/humidity.jpg`);
+  const iconSunrise = require(`../../../../assets/weather/sunrise.png`);
+  const iconSunset = require(`../../../../assets/weather/sunset.png`);
+  const iconWind = require(`../../../../assets/weather/wind.png`);
   //load icon
   const icon =
     weather && require(`../../../../assets/weather/icons/${weather.icon}.png`);
-
-  const hourlyForecast = hourlyForecastData.map(
-    ({ temp, tempFills, weather, humidity, time }: any): any => (
-      <HourlyForecastItem
-        key={time}
-        temp={temp}
-        tempFills={tempFills}
-        weather={weather}
-        humidity={humidity}
-        time={time}
-      />
-    )
-  );
-
-  const settings = {
-    speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    infinite: false,
-  };
   return (
     <div>
       <Wrapper>
@@ -58,7 +48,7 @@ const GeneralDescription = () => {
         <CurrentDate>{moment(ob_time).format("MMM Do YYYY")}</CurrentDate>
         <TempContainer>
           <Temp>
-            <span>{temp}°</span>
+            <span>{temp}&#8451;</span>
             <img src={icon?.default} alt={weather?.description} width={80} />
           </Temp>
           <TempDescription>
@@ -66,7 +56,52 @@ const GeneralDescription = () => {
             <span>fills like {tempFills}°</span>
           </TempDescription>
         </TempContainer>
-        <Slider {...settings}>{hourlyForecast}</Slider>
+        <AddIndicators>
+          <AddIndicator>
+            <ItemTitle>
+              <img
+                src={iconSunrise?.default}
+                alt={iconSunrise?.description}
+                width={20}
+              />
+              <span>Sunrise</span>
+            </ItemTitle>
+            <ItemValue>{sunrise}</ItemValue>
+          </AddIndicator>
+          <AddIndicator>
+            <ItemTitle>
+              <img
+                src={iconSunset?.default}
+                alt={iconSunset?.description}
+                width={20}
+              />
+              <span>Sunset</span>
+            </ItemTitle>
+            <ItemValue>{sunset}</ItemValue>
+          </AddIndicator>
+          <AddIndicator>
+            <ItemTitle>
+              <img
+                src={iconWind?.default}
+                alt={iconWind?.description}
+                width={20}
+              />
+              Wind speed({windDirection})
+            </ItemTitle>
+            <ItemValue>{windSpeed}m/s</ItemValue>
+          </AddIndicator>
+          <AddIndicator>
+            <ItemTitle>
+              <img
+                src={iconHumudity?.default}
+                alt={iconHumudity?.description}
+                width={20}
+              />
+              <span>Humidity</span>
+            </ItemTitle>
+            <ItemValue>{humidity}%</ItemValue>
+          </AddIndicator>
+        </AddIndicators>
       </Wrapper>
     </div>
   );

@@ -6,6 +6,7 @@ button {
 
 ul {
   list-style-type: none;
+  padding: 0;
 }
 
 a {
@@ -15,4 +16,7 @@ a {
 .slick-prev:before,
 .slick-next:before {
   color: black !important;
+}
+.slick-slider {
+  width: 100%;
 }
