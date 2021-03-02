@@ -1,11 +1,15 @@
+import { weatherStateType, weatherActions } from "./types";
 export { PUT_CURRENT_WEATHER, PUT_DAILY_WEATHER } from "./types";
 
-const addCurrentWeather = (state, action) => ({
+const addCurrentWeather = (
+  state: weatherStateType,
+  action: weatherActions
+) => ({
   ...state,
   currentWeather: action.payload,
 });
 
-const addDailyWeather = (state, action) => ({
+const addDailyWeather = (state: weatherStateType, action: weatherActions) => ({
   ...state,
   dailyWeather: action.payload,
 });

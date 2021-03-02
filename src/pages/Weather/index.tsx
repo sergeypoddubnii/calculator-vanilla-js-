@@ -8,6 +8,7 @@ import DailyList from "./components/DailyList";
 
 const Weather = () => {
   const currentWeather = useSelector(getCurrentWeather);
+  console.log(currentWeather);
   const dispatch = useDispatch();
   useEffect(() => {
     if (navigator.geolocation) {
