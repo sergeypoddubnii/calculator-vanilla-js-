@@ -2,6 +2,8 @@ import React from "react";
 import moment from "moment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
+import { getCurrentWeather } from "../../../../redux/weather/selectors";
 import {
   Wrapper,
   Location,
@@ -14,8 +16,6 @@ import {
   ItemTitle,
   ItemValue,
 } from "./styledGeneralDescription";
-import { useSelector } from "react-redux";
-import { getCurrentWeather } from "../../../../redux/weather/selectors";
 
 const GeneralDescription = () => {
   const {
@@ -35,7 +35,7 @@ const GeneralDescription = () => {
   const iconSunrise = require(`../../../../assets/weather/sunrise.png`);
   const iconSunset = require(`../../../../assets/weather/sunset.png`);
   const iconWind = require(`../../../../assets/weather/wind.png`);
-  //load icon
+  //load icon weather
   const icon =
     weather && require(`../../../../assets/weather/icons/${weather.icon}.png`);
   return (
