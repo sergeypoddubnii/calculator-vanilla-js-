@@ -1,4 +1,4 @@
-export const hourlySelectData = (data) => {
+export const hourlySelectData = (data: []) => {
   return data.map((hour) => {
     const { temp, rh, weather, timestamp_local } = hour;
     return {

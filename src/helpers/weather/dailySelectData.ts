@@ -1,4 +1,4 @@
-export const dailySelectData = (data) => {
+export const dailySelectData = (data: []) => {
   return data.map((day) => {
     const { max_temp, min_temp, rh, weather, datetime } = day;
     return {

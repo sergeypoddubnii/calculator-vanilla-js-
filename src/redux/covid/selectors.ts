@@ -1,13 +1,23 @@
 import { countMonthGlobalCovid } from "../../helpers/covid/countMonthGlobalCovid";
 import { countPerMonthCovid } from "../../helpers/covid/countPerMonthCovid";
 import { createSelector } from "reselect";
+import { covidStateType } from "./types";
 
-export const getGlobalCovidState = (state) => state.covid.global;
+interface stateType {
+  covid: covidStateType;
+  weather: object;
+}
 
-const getDailyCovidState = (state) => state.covid.daily;
+export const getGlobalCovidState = (state: stateType) => state.covid.global;
 
-export const getMonthGlobalCovid = createSelector(getDailyCovidState, (dailyState) =>
-  countMonthGlobalCovid(dailyState)
+const getDailyCovidState = (state: stateType) => state.covid.daily;
+
+export const getMonthGlobalCovid = createSelector(
+  getDailyCovidState,
+  (dailyState) => countMonthGlobalCovid(dailyState)
 );
 
-export const getPerMonthCovid = createSelector(getMonthGlobalCovid, (monthState) => countPerMonthCovid(monthState));
+export const getPerMonthCovid = createSelector(
+  getMonthGlobalCovid,
+  (monthState) => countPerMonthCovid(monthState)
+);

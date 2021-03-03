@@ -1,11 +1,12 @@
+import { covidStateType, covidActionsType } from "./types";
 export { PUT_GLOBAL_COVID, PUT_DAILY_COVID } from "./types";
 
-const addToGlobal = (state, action) => ({
+const addToGlobal = (state: covidStateType, action: covidActionsType) => ({
   ...state,
   global: action.payload,
 });
 
-const addToDailyDate = (state, action) => ({
+const addToDailyDate = (state: covidStateType, action: covidActionsType) => ({
   ...state,
   daily: action.payload,
 });
